@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Melanny Suarez - Tarjeta NFC</title>
+    <title>Steven Castillo - Tarjeta NFC</title>
     <style>
         /* RESET TOTAL PARA EVITAR DESPLAZAMIENTOS */
         * { 
@@ -127,13 +127,13 @@
             <img id="img-perfil" src="" class="profile-img" alt="Melanny">
         </div>
 
-        <h1>Melanny Suarez</h1>
-        <p class="profesion">Profesional... pero con flow!!</p>
+        <h1>Steven Castillo</h1>
+        <p class="profesion">Ingeniero Electronico</p>
 
         <div class="btn-group">
-            <a href="tel:+593990995999" class="btn">Llamar ahora</a>
-            <a href="https://wa.me/593990995999" class="btn btn-alt">WhatsApp</a>
-            <a href="mailto:suarezmelanny03@gmail.com" class="btn btn-alt">Enviar Correo</a>
+            <a href="tel:+593998002028" class="btn">Llamar ahora</a>
+            <a href="https://wa.me/593998002028" class="btn btn-alt">WhatsApp</a>
+            <a href="mailto:stevencast556gmail.com" class="btn btn-alt">Enviar Correo</a>
             <button onclick="descargarVcard()" class="btn btn-alt" style="cursor:pointer;">Guardar Contacto</button>
         </div>
     </div>
@@ -160,12 +160,12 @@
         });
 
         function descargarVcard() {
-            const vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:Melanny Suarez\nTITLE:CHULA\nTEL:+593990995999\nEND:VCARD";
+            const vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:Steven Castillo\nTITLE:Steven\nTEL:+593998002028\nEND:VCARD";
             const blob = new Blob([vcard], { type: "text/vcard" });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement("a");
             a.href = url;
-            a.download = "Melanny_Suarez.vcf";
+            a.download = "Steven_Castillo.vcf";
             a.click();
         }
     </script>
