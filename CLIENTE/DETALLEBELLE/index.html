@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mosaico Romántico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* AQUÍ CAMBIAS EL COLOR DE FONDO */
+            --bg-color: #ffeef2; /* Rosado muy suave */
+            --text-color: #2d2d2d;
+            --box-bg: #ffffff;
+            --photo-border: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 20px;
+        }
+
+        /* Rejilla principal */
+        .mosaic-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        /* Cuadro de texto central */
+        .text-center {
+            grid-column: span 2;
+            grid-row: span 2;
+            background-color: var(--box-bg);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px;
+            /* Sombra un poco más suave y rosada para combinar */
+            box-shadow: 0 10px 30px rgba(219, 112, 147, 0.2); 
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            z-index: 5;
+        }
+
+        .text-center h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.6rem;
+            margin: 0 0 10px 0;
+            color: #d81b60; /* Un tono cereza suave para el título */
+        }
+
+        .text-center p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        /* Estilo de las fotos */
+        .photo {
+            background: var(--photo-border);
+            padding: 8px;
+            box-shadow: 0 5px 15px rgba(219, 112, 147, 0.15);
+            transition: transform 0.3s ease;
+            aspect-ratio: 1 / 1;
+            border-radius: 4px;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 2px;
+        }
+
+        /* Pequeñas rotaciones para efecto collage */
+        .photo:nth-child(odd) { transform: rotate(-1.5deg); }
+        .photo:nth-child(even) { transform: rotate(1.5deg); }
+
+        /* EFECTO PARA MÓVIL */
+        @media (max-width: 768px) {
+            .mosaic-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .text-center {
+                grid-column: span 2;
+                grid-row: auto;
+                margin-bottom: 10px;
+                padding: 25px;
+            }
+
+            .text-center h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Hover effect (Solo en PC) */
+        @media (hover: hover) {
+            .photo:hover {
+                transform: scale(1.08) rotate(0deg);
+                z-index: 10;
+                box-shadow: 0 15px 35px rgba(219, 112, 147, 0.3);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="mosaic-grid">
+            
+            <!-- Fotos (12 en total para llenar todo el mosaico) -->
+            <div class="photo"><img src="data:image/png;base64,BASE64_1"></div>
+            <div class="photo"><img src="data:image/png;base64,BASE64_2"></div>
+            <div class="photo"><img src="data:image/png;base64,BASE64_3"></div>
+            <div class="photo"><img src="data:image/png;base64,BASE64_4"></div>
+
+            <div class="photo"><img src="data:image/png;base64,BASE64_5"></div>
+            
+            <!-- CUADRO DE TEXTO -->
+            <div class="text-center">
+                <h2>Con Amor</h2>
+                <p>Tu mensaje especial aquí. Ahora con un fondo rosado suave y un estilo de mosaico perfecto para móvil y PC.</p>
+            </div>
+
+            <div class="photo"><img src="data:image/png;base64,BASE64_6"></div>
+
+            <div class="photo"><img src="data:image/png;base64,BASE64_7"></div>
+            <div class="photo"><img src="data:image/png;base64,BASE64_8"></div>
+            <div class="photo"><img src="data:image/png;base64,BASE64_9"></div>
+            <div class="photo"><img src="data:image/png;base64,BASE64_10"></div>
+            <div class="photo"><img src="data:image/png;base64,BASE64_11"></div>
+            <div class="photo"><img src="data:image/png;base64,BASE64_12"></div>
+
+        </div>
+    </div>
+
+</body>
+</html>
