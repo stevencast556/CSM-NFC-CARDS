@@ -1,1 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Steven Castillo - Tarjeta & Catálogo</title>
+    <style>
+        /* RESET Y ESTILOS BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
 
+        body {
+            background-color: #000;
+            /* RUTA A TU IMAGEN DE FONDO EN LA CARPETA */
+            background-image: url('https://github.com/stevencast556/CSM-NFC-CARDS/blob/b06c94b43fd83119670a426e866875f00e40e915/CLIENTE/DISE%C3%91O_MUESTRA_NEGO_1/img/images.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Oscurece el fondo para leer mejor */
+            z-index: 1;
+        }
+
+        .main-wrapper {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        /* --- SECCIÓN TARJETA DE PRESENTACIÓN --- */
+        .profile-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 35px;
+            padding: 35px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .profile-img {
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            border: 3px solid #3b82f6;
+            margin-bottom: 15px;
+            object-fit: cover;
+            /* RUTA A TU FOTO DE PERFIL EN LA CARPETA */
+            background-image: url('https://github.com/stevencast556/CSM-NFC-CARDS/blob/b06c94b43fd83119670a426e866875f00e40e915/CLIENTE/DISE%C3%91O_MUESTRA_NEGO_1/img/perfil.jpg');
+            background-size: cover;
+        }
+
+        h1 { font-size: 26px; color: white; margin-bottom: 5px; }
+        .tagline { color: #3b82f6; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; font-weight: 600; }
+
+        /* GRID DE CONTACTO */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .btn-contact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .btn-wa { background: #25D366; border: none; }
+        .btn-call { background: #3b82f6; border: none; }
+        
+        .btn-save {
+            grid-column: span 2;
+            background: white;
+            color: black;
+            flex-direction: row;
+            font-weight: bold;
+        }
+
+        .icon { width: 20px; height: 20px; fill: currentColor; }
+
+        /* --- SECCIÓN CATÁLOGO --- */
+        .catalog-title {
+            text-align: center;
+            color: white;
+            margin: 20px 0;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .product-info { padding: 20px; text-align: center; }
+        .p-name { font-size: 18px; font-weight: 600; margin-bottom: 5px; }
+        .p-price { font-size: 22px; color: #25D366; font-weight: 800; margin-bottom: 15px; }
+
+        .btn-order {
+            display: block;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+        .footer { text-align: center; color: rgba(255,255,255,0.3); padding: 40px 0; font-size: 10px; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="main-wrapper">
+        
+        <!-- TARJETA DE PRESENTACIÓN -->
+        <div class="profile-card">
+            <!-- RUTA A TU FOTO DE PERFIL -->
+            <img src="img/perfil.jpg" class="profile-img" alt="Foto Perfil">
+            
+            <h1>Steven Castillo</h1>
+            <p class="tagline">Ingeniero en Automatización</p>
+
+            <div class="contact-grid">
+                <a href="tel:+123456789" class="btn-contact btn-call">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79a15.15 15.15 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    Llamar
+                </a>
+
+                <a href="https://wa.me/123456789" class="btn-contact btn-wa">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.81 9.81 0 0012.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 012.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 01-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 8.07c-.13 0-.34.05-.52.24-.18.19-.69.67-.69 1.63s.7 1.89.8 2.03c.1.13 1.37 2.09 3.32 2.93.46.2.83.32 1.11.41.47.15.89.13 1.22.08.38-.05 1.17-.48 1.33-.94.16-.47.16-.86.11-.94-.05-.09-.18-.13-.38-.24s-1.17-.57-1.35-.64c-.18-.08-.31-.11-.45.09-.13.19-.52.64-.64.78-.11.13-.24.15-.44.05-.2-.1-1-.37-1.91-1.18-.71-.63-1.19-1.41-1.33-1.65-.13-.24-.01-.37.09-.47.09-.09.2-.24.3-.35.1-.11.13-.19.19-.32.07-.13.03-.25-.02-.35-.05-.09-.45-1.09-.62-1.5-.17-.4-.35-.35-.47-.35z"/></svg>
+                    WhatsApp
+                </a>
+
+                <a href="mailto:tu-correo@mail.com" class="btn-contact">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    Email
+                </a>
+
+                <a href="https://instagram.com/tu-usuario" class="btn-contact">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 01-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 017.8 2m-.2 2A3.6 3.6 0 004 7.6v8.8A3.6 3.6 0 007.6 20h8.8a3.6 3.6 0 003.6-3.6V7.6A3.6 3.6 0 0016.4 4H7.6m9.65 1.5a1.25 1.25 0 011.25 1.25A1.25 1.25 0 0117.25 8 1.25 1.25 0 0116 6.75a1.25 1.25 0 011.25-1.25M12 7a5 5 0 015 5 5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5m0 2a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3z"/></svg>
+                    Instagram
+                </a>
+
+                <button onclick="saveContact()" class="btn-contact btn-save">
+                    Guardar en Agenda
+                </button>
+            </div>
+        </div>
+
+        <!-- CATÁLOGO -->
+        <h2 class="catalog-title">Nuestro Catálogo</h2>
+
+        <div class="product-list">
+            
+            <!-- PRODUCTO 1 -->
+            <div class="product-card">
+                <!-- RUTA A LA FOTO DEL PRODUCTO 1 -->
+                <img src="img/producto1.jpg" class="product-img">
+                <div class="product-info">
+                    <div class="p-name">Producto Premium A</div>
+                    <div class="p-price">$45.00</div>
+                    <a href="https://wa.me/123456789?text=Me interesa el Producto A" class="btn-order">Comprar ahora</a>
+                </div>
+            </div>
+
+            <!-- PRODUCTO 2 -->
+            <div class="product-card">
+                <!-- RUTA A LA FOTO DEL PRODUCTO 2 -->
+                <img src="img/producto2.jpg" class="product-img">
+                <div class="product-info">
+                    <div class="p-name">Producto Premium B</div>
+                    <div class="p-price">$60.00</div>
+                    <a href="https://wa.me/123456789?text=Me interesa el Producto B" class="btn-order">Comprar ahora</a>
+                </div>
+            </div>
+
+        </div>
+
+        <p class="footer">POWERED BY TU EMPRESA NFC</p>
+    </div>
+
+    <script>
+        function saveContact() {
+            const vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:Steven Castillo\nTEL;TYPE=CELL:+123456789\nEMAIL:tu-correo@mail.com\nEND:VCARD";
+            const blob = new Blob([vcard], { type: "text/vcard" });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "Steven_Castillo.vcf";
+            a.click();
+        }
+    </script>
+</body>
+</html>
