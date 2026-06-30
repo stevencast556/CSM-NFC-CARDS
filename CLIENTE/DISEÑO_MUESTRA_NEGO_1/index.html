@@ -20,12 +20,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* RUTA ABSOLUTA PARA EVITAR ERRORES CON LA "Ñ" */
             background-image: url('https://stevencast556.github.io/CSM-NFC-CARDS/CLIENTE/DISE%C3%91O_MUESTRA_NEGO_1/img/Fondo.jpg');
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
-            z-index: -2; /* Va detrás de todo */
+            z-index: -2;
         }
 
         /* CAPA OSCURA PARA LEER TEXTO */
@@ -35,8 +34,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: -1; /* Va entre el fondo y el contenido */
+            background: rgba(0, 0, 0, 0.65);
+            z-index: -1;
         }
 
         body {
@@ -68,8 +67,8 @@
         }
 
         .profile-img {
-            width: 120px;
-            height: 120px;
+            width: 115px;
+            height: 115px;
             border-radius: 50%;
             border: 3px solid #3b82f6;
             margin: 0 auto 15px;
@@ -81,7 +80,7 @@
         h1 { font-size: 26px; margin-bottom: 5px; font-weight: 700; }
         .tagline { 
             color: #3b82f6; 
-            font-size: 14px; 
+            font-size: 13px; 
             text-transform: uppercase; 
             letter-spacing: 2px; 
             margin-bottom: 30px; 
@@ -123,32 +122,47 @@
             gap: 10px;
         }
 
+        .btn-contact:active { transform: scale(0.95); }
+
         .icon { width: 20px; height: 20px; fill: currentColor; }
 
-        /* --- CATÁLOGO --- */
+        /* --- CATÁLOGO OPTIMIZADO --- */
         .catalog-title {
             text-align: center;
             color: white;
             margin-bottom: 25px;
-            font-size: 20px;
+            font-size: 18px;
             text-transform: uppercase;
             letter-spacing: 4px;
+            font-weight: 300;
         }
 
         .product-card {
-            background: rgba(255, 255, 255, 0.07);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 28px;
             overflow: hidden;
             margin-bottom: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             color: white;
             text-align: center;
+            transition: 0.3s;
         }
 
-        .product-img { width: 100%; height: 230px; object-fit: cover; }
+        /* Ajuste de Imagen de Producto */
+        .product-img { 
+            width: 100%; 
+            /* Esto crea un contenedor cuadrado perfecto independientemente de la foto */
+            aspect-ratio: 1 / 1; 
+            /* Esto hace que la foto llene el cuadro sin deformarse */
+            object-fit: cover; 
+            display: block;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: #1a1a1a; /* Fondo por si la imagen tarda en cargar */
+        }
+
         .product-info { padding: 20px; }
-        .p-name { font-size: 19px; font-weight: 600; margin-bottom: 8px; }
-        .p-price { font-size: 24px; color: #25D366; font-weight: 800; margin-bottom: 18px; }
+        .p-name { font-size: 18px; font-weight: 600; margin-bottom: 8px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+        .p-price { font-size: 22px; color: #25D366; font-weight: 800; margin-bottom: 18px; }
 
         .btn-order {
             display: block;
@@ -158,21 +172,22 @@
             padding: 14px;
             border-radius: 15px;
             font-weight: bold;
+            transition: 0.3s;
         }
+
+        .btn-order:active { background: #1eb954; transform: scale(0.98); }
 
         .footer { text-align: center; color: rgba(255,255,255,0.3); padding: 50px 0; font-size: 10px; letter-spacing: 3px; }
     </style>
 </head>
 <body>
 
-    <!-- FONDO Y CAPA OSCURA -->
     <div class="background-fix"></div>
     <div class="overlay"></div>
 
     <div class="main-wrapper">
         
         <div class="profile-card">
-            <!-- FOTO DE PERFIL (RUTA RELATIVA) -->
             <img src="img/perfil.jpg" class="profile-img" alt="Perfil">
             
             <h1>Steven Castillo</h1>
@@ -189,7 +204,8 @@
                     WhatsApp
                 </a>
 
-                <a href="csmsmartcards@gmail.com" class="btn-contact">
+                <!-- Corregido el enlace de correo (agregado mailto:) -->
+                <a href="mailto:csmsmartcards@gmail.com" class="btn-contact">
                     <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                     Correo
                 </a>
@@ -210,20 +226,20 @@
         <div class="product-list">
             <!-- PRODUCTO 1 -->
             <div class="product-card">
-                <img src="img/P1_Tarjetas.jpg" class="product-img">
+                <img src="img/P1_Tarjetas.jpg" class="product-img" alt="Tarjeta Básica">
                 <div class="product-info">
                     <div class="p-name">Tarjeta de Presentación Básica</div>
                     <div class="p-price">$15.00</div>
-                    <a href="https://wa.me/593998002028?text=Me interesa el Producto 01" class="btn-order">Ordenar por WhatsApp</a>
+                    <a href="https://wa.me/593998002028?text=Me interesa la Tarjeta de Presentación Básica" class="btn-order">Ordenar por WhatsApp</a>
                 </div>
             </div>
             <!-- PRODUCTO 2 -->
             <div class="product-card">
-                <img src="img/P2_Tarjetas.jpg" class="product-img">
+                <img src="img/P2_Tarjetas.jpg" class="product-img" alt="Tarjeta Negocio">
                 <div class="product-info">
                     <div class="p-name">Tarjeta de Presentación Negocio</div>
                     <div class="p-price">$25.00</div>
-                    <a href="https://wa.me/593998002028?text=Me interesa el Producto 02" class="btn-order">Ordenar por WhatsApp</a>
+                    <a href="https://wa.me/593998002028?text=Me interesa la Tarjeta de Presentación Negocio" class="btn-order">Ordenar por WhatsApp</a>
                 </div>
             </div>
         </div>
