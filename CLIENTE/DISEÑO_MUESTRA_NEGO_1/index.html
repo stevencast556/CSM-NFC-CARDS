@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Steven Castillo - Tarjeta & Catálogo</title>
     <style>
-        /* RESET DE ESTILOS */
+        /* RESET TOTAL */
         * { 
             margin: 0; 
             padding: 0; 
@@ -13,14 +13,34 @@
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
         }
 
+        /* FONDO BLINDADO PARA MÓVILES */
+        .background-fix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* RUTA ABSOLUTA PARA EVITAR ERRORES CON LA "Ñ" */
+            background-image: url('https://stevencast556.github.io/CSM-NFC-CARDS/CLIENTE/DISE%C3%91O_MUESTRA_NEGO_1/img/Fondo.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            z-index: -2; /* Va detrás de todo */
+        }
+
+        /* CAPA OSCURA PARA LEER TEXTO */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1; /* Va entre el fondo y el contenido */
+        }
+
         body {
             background-color: #000;
-            /* RUTA CORREGIDA: Respetando la F mayúscula de tu archivo */
-            background-image: url('img/Fondo.jpg'); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -28,24 +48,14 @@
             padding: 20px 0;
         }
 
-        /* Capa oscura para mejorar legibilidad */
-        .overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.65);
-            z-index: 1;
-        }
-
         .main-wrapper {
-            position: relative;
-            z-index: 10;
             width: 90%;
             max-width: 400px;
         }
 
-        /* --- SECCIÓN DE LA TARJETA --- */
+        /* --- TARJETA --- */
         .profile-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -54,6 +64,7 @@
             text-align: center;
             margin-bottom: 30px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            color: white;
         }
 
         .profile-img {
@@ -64,10 +75,10 @@
             margin: 0 auto 15px;
             object-fit: cover;
             display: block;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            background: #222;
         }
 
-        h1 { font-size: 26px; color: white; margin-bottom: 5px; font-weight: 700; }
+        h1 { font-size: 26px; margin-bottom: 5px; font-weight: 700; }
         .tagline { 
             color: #3b82f6; 
             font-size: 14px; 
@@ -77,7 +88,7 @@
             font-weight: 600; 
         }
 
-        /* GRID DE CONTACTO CENTRADO */
+        /* BOTONES DE CONTACTO */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -109,25 +120,23 @@
             color: #000;
             flex-direction: row;
             font-weight: 700;
-            margin-top: 5px;
             gap: 10px;
         }
 
         .icon { width: 20px; height: 20px; fill: currentColor; }
 
-        /* --- SECCIÓN CATÁLOGO --- */
+        /* --- CATÁLOGO --- */
         .catalog-title {
             text-align: center;
             color: white;
-            margin: 20px 0 25px;
+            margin-bottom: 25px;
             font-size: 20px;
             text-transform: uppercase;
             letter-spacing: 4px;
-            font-weight: 300;
         }
 
         .product-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.07);
             border-radius: 28px;
             overflow: hidden;
             margin-bottom: 25px;
@@ -136,12 +145,7 @@
             text-align: center;
         }
 
-        .product-img {
-            width: 100%;
-            height: 230px;
-            object-fit: cover;
-        }
-
+        .product-img { width: 100%; height: 230px; object-fit: cover; }
         .product-info { padding: 20px; }
         .p-name { font-size: 19px; font-weight: 600; margin-bottom: 8px; }
         .p-price { font-size: 24px; color: #25D366; font-weight: 800; margin-bottom: 18px; }
@@ -154,109 +158,87 @@
             padding: 14px;
             border-radius: 15px;
             font-weight: bold;
-            transition: 0.3s;
         }
-
-        .btn-order:active { transform: scale(0.96); }
 
         .footer { text-align: center; color: rgba(255,255,255,0.3); padding: 50px 0; font-size: 10px; letter-spacing: 3px; }
     </style>
 </head>
 <body>
 
-    <!-- Capa oscura de fondo -->
+    <!-- FONDO Y CAPA OSCURA -->
+    <div class="background-fix"></div>
     <div class="overlay"></div>
 
     <div class="main-wrapper">
         
-        <!-- TARJETA DE PRESENTACIÓN -->
         <div class="profile-card">
-            <!-- Imagen de perfil desde tu carpeta img -->
-            <img src="img/perfil.jpg" class="profile-img" alt="Steven Castillo">
+            <!-- FOTO DE PERFIL (RUTA RELATIVA) -->
+            <img src="img/perfil.jpg" class="profile-img" alt="Perfil">
             
             <h1>Steven Castillo</h1>
             <p class="tagline">Ingeniero en Automatización</p>
 
             <div class="contact-grid">
-                <!-- LLAMADA -->
                 <a href="tel:+123456789" class="btn-contact btn-call">
                     <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79a15.15 15.15 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                     Llamar
                 </a>
 
-                <!-- WHATSAPP -->
                 <a href="https://wa.me/123456789" class="btn-contact btn-wa">
                     <svg class="icon" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.81 9.81 0 0012.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 01-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 8.07c-.13 0-.34.05-.52.24-.18.19-.69.67-.69 1.63s.7 1.89.8 2.03c.1.13 1.37 2.09 3.32 2.93.46.2.83.32 1.11.41.47.15.89.13 1.22.08.38-.05 1.17-.48 1.33-.94.16-.47.16-.86.11-.94-.05-.09-.18-.13-.38-.24s-1.17-.57-1.35-.64c-.18-.08-.31-.11-.45.09-.13.19-.52.64-.64.78-.11.13-.24.15-.44.05-.2-.1-1-.37-1.91-1.18-.71-.63-1.19-1.41-1.33-1.65-.13-.24-.01-.37.09-.47.09-.09.2-.24.3-.35.1-.11.13-.19.19-.32.07-.13.03-.25-.02-.35-.05-.09-.45-1.09-.62-1.5-.17-.4-.35-.35-.47-.35z"/></svg>
                     WhatsApp
                 </a>
 
-                <!-- CORREO -->
-                <a href="mailto:tuemail@dominio.com" class="btn-contact">
+                <a href="mailto:tuemail@ejemplo.com" class="btn-contact">
                     <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                     Correo
                 </a>
 
-                <!-- INSTAGRAM -->
                 <a href="https://instagram.com/tuusuario" class="btn-contact">
                     <svg class="icon" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 01-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 017.8 2m-.2 2A3.6 3.6 0 004 7.6v8.8A3.6 3.6 0 007.6 20h8.8a3.6 3.6 0 003.6-3.6V7.6A3.6 3.6 0 0016.4 4H7.6m9.65 1.5a1.25 1.25 0 011.25 1.25A1.25 1.25 0 0117.25 8 1.25 1.25 0 0116 6.75a1.25 1.25 0 011.25-1.25M12 7a5 5 0 015 5 5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5m0 2a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3z"/></svg>
                     Instagram
                 </a>
 
-                <!-- BOTÓN GUARDAR -->
-                <button onclick="saveToVCard()" class="btn-contact btn-save">
-                    <svg class="icon" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                <button onclick="saveContact()" class="btn-contact btn-save">
                     GUARDAR CONTACTO
                 </button>
             </div>
         </div>
 
-        <!-- TÍTULO CATÁLOGO -->
         <h2 class="catalog-title">Nuestro Catálogo</h2>
 
-        <!-- LISTA DE PRODUCTOS -->
         <div class="product-list">
-            
             <!-- PRODUCTO 1 -->
             <div class="product-card">
-                <img src="img/producto1.jpg" class="product-img" alt="Producto 1">
+                <img src="img/producto1.jpg" class="product-img">
                 <div class="product-info">
-                    <div class="p-name">Producto Premium 01</div>
+                    <div class="p-name">Producto Muestra 01</div>
                     <div class="p-price">$45.00</div>
-                    <a href="https://wa.me/123456789?text=Hola, me interesa el Producto 01" class="btn-order">Comprar por WhatsApp</a>
+                    <a href="https://wa.me/123456789?text=Me interesa el Producto 01" class="btn-order">Ordenar por WhatsApp</a>
                 </div>
             </div>
-
             <!-- PRODUCTO 2 -->
             <div class="product-card">
-                <img src="img/producto2.jpg" class="product-img" alt="Producto 2">
+                <img src="img/producto2.jpg" class="product-img">
                 <div class="product-info">
-                    <div class="p-name">Producto Premium 02</div>
+                    <div class="p-name">Producto Muestra 02</div>
                     <div class="p-price">$60.00</div>
-                    <a href="https://wa.me/123456789?text=Hola, me interesa el Producto 02" class="btn-order">Comprar por WhatsApp</a>
+                    <a href="https://wa.me/123456789?text=Me interesa el Producto 02" class="btn-order">Ordenar por WhatsApp</a>
                 </div>
             </div>
-
         </div>
 
-        <p class="footer">CSM-NFC CARDS BUSINESS</p>
+        <p class="footer">POWERED BY CSM-NFC CARDS</p>
     </div>
 
     <script>
-        // Función para descargar el contacto (vCard)
-        function saveToVCard() {
-            const vcard = "BEGIN:VCARD\n" +
-                          "VERSION:3.0\n" +
-                          "FN:Steven Castillo\n" +
-                          "TITLE:Ingeniero en Automatización\n" +
-                          "TEL;TYPE=CELL:+123456789\n" +
-                          "EMAIL:tuemail@dominio.com\n" +
-                          "END:VCARD";
-            
+        function saveContact() {
+            const vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:Steven Castillo\nTEL:+123456789\nEND:VCARD";
             const blob = new Blob([vcard], { type: "text/vcard" });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement("a");
             a.href = url;
-            a.download = "Steven_Castillo.vcf";
+            a.download = "Contacto.vcf";
             a.click();
         }
     </script>
