@@ -63,17 +63,21 @@
             margin-bottom: 25px;
             color: white;
         }
-
+        
         .profile-img {
-            width: 160px; /* Tamaño igualado para círculo perfecto */
-            height: 160px; /* Tamaño igualado para círculo perfecto */
-            border-radius: 50%;
-            border: 3px solid #295eb4;
+            width: 160px;        /* Ancho igual al alto */
+            height: 160px;       /* Alto igual al ancho */
+            border-radius: 50%;  /* Crea el círculo perfecto */
+            border: 4px solid #295eb4; 
             margin: 0 auto 15px;
-            /* SE ESTABLECE DENTRO SIN RECORTAR */
-            object-fit: contain; 
-            background-color: rgba(255, 255, 255, 0.05); /* Fondo para que la imagen completa luzca bien */
             display: block;
+            
+            /* ESTO SOLUCIONA EL PROBLEMA: */
+            object-fit: cover;   /* Hace que la foto rellene todo el círculo */
+            object-position: center; /* Centra la cara en el círculo */
+            
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background-color: white; /* Por si la imagen tarda en cargar */
         }
 
         h1 { font-size: 24px; margin-bottom: 5px; font-weight: 700; letter-spacing: -0.5px; }
