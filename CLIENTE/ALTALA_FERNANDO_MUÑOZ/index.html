@@ -1,1 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title> FERNANDO MUÑOZ ALTALA.SA </title>
+    <style>
+        /* RESET TOTAL */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+        }
 
+        /* FONDO BLINDADO */
+        .background-fix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://stevencast556.github.io/CSM-NFC-CARDS/CLIENTE/ALTALA_FERNANDO_MUÑOZ/imgFM/Fondo.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+
+        body {
+            background-color: #000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .main-wrapper {
+            width: 92%;
+            max-width: 450px;
+        }
+
+        /* --- TARJETA DE PERFIL --- */
+        .profile-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 35px;
+            padding: 35px 20px;
+            text-align: center;
+            margin-bottom: 25px;
+            color: white;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid #ad1c1c; 
+            margin: 0 auto 15px;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background-color: white;
+        }
+
+        h1 { font-size: 24px; margin-bottom: 5px; font-weight: 700; letter-spacing: -0.5px; }
+        .tagline { 
+            color: #ad1c1c; 
+            font-size: 18px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            margin-bottom: 25px; 
+            font-weight: 700; 
+        }
+
+        /* BOTONES VERTICALES */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-contact {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s ease;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-call { background: #3b82f6; border: none; }
+        .btn-wa { background: #25D366; border: none; }
+        .btn-email { background: rgba(255, 255, 255, 0.15); }
+        .btn-instagram { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(225, 48, 108, 0.5); }
+        .btn-tiktok { background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 255, 255, 0.2); }
+        .btn-web { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .btn-save { background: #fff; color: #000; font-weight: 700; }
+
+        .btn-contact:active { transform: scale(0.97); }
+        
+        /* Estilo de Iconos */
+        .icon { 
+            width: 20px; 
+            height: 20px; 
+            fill: currentColor; 
+        }
+
+        /* --- SECCIÓN DE VIDEO --- */
+        .video-title {
+            text-align: center;
+            color: white;
+            margin: 30px 0 20px;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+
+        .video-container {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 30px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            line-height: 0;
+            margin-bottom: 20px;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .footer { text-align: center; color: rgba(255,255,255,0.3); padding: 40px 0; font-size: 9px; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+
+    <div class="background-fix"></div>
+    <div class="overlay"></div>
+
+    <div class="main-wrapper">
+        
+        <div class="profile-card">
+            <img src="imgSA/Perfil.jpg" class="profile-img" alt="Perfil">
+            <h1>FERNANDO MUÑOZ</h1>
+            <p class="tagline">GERENTE GENERAL ALTALA S.A</p>
+
+            <div class="contact-list">
+                <!-- LLAMAR -->
+                <a href="tel:+593998004811" class="btn-contact btn-call">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79a15.15 15.15 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    Llamar ahora
+                </a>
+
+                <!-- WHATSAPP -->
+                <a href="https://wa.me/593998004811" class="btn-contact btn-wa">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.81 9.81 0 0012.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 012.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 01-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 8.07c-.13 0-.34.05-.52.24-.18.19-.69.67-.69 1.63s.7 1.89.8 2.03c.1.13 1.37 2.09 3.32 2.93.46.2.83.32 1.11.41.47.15.89.13 1.22.08.38-.05 1.17-.48 1.33-.94.16-.47.16-.86.11-.94-.05-.09-.18-.13-.38-.24s-1.17-.57-1.35-.64c-.18-.08-.31-.11-.45.09-.13.19-.52.64-.64.78-.11.13-.24.15-.44.05-.2-.1-1-.37-1.91-1.18-.71-.63-1.19-1.41-1.33-1.65-.13-.24-.01-.37.09-.47.09-.09.2-.24.3-.35.1-.11.13-.19.19-.32.07-.13.03-.25-.02-.35-.05-.09-.45-1.09-.62-1.5-.17-.4-.35-.35-.47-.35z"/></svg>
+                    WhatsApp
+                </a>
+
+                <!-- CORREO -->
+                <a href="mailto:fernando.munoz@altala.net" class="btn-contact btn-email">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    Correo
+                </a>
+
+                <!-- WEB -->
+                <a href="https://altala.net" target="_blank" class="btn-contact btn-web">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    Visitar Sitio Web
+                </a>
+
+                <!-- INSTAGRAM -->
+                <a href="https://www.instagram.com/altalasa" target="_blank" class="btn-contact btn-instagram">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 01-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 017.8 2m-.2 2A3.6 3.6 0 004 7.6v8.8A3.6 3.6 0 007.6 20h8.8a3.6 3.6 0 003.6-3.6V7.6A3.6 3.6 0 0016.4 4H7.6m9.65 1.5a1.25 1.25 0 011.25 1.25A1.25 1.25 0 0117.25 8 1.25 1.25 0 0116 6.75a1.25 1.25 0 011.25-1.25M12 7a5 5 0 015 5 5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5m0 2a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3z"/></svg>
+                    Instagram
+                </a>
+
+                <!-- TIKTOK -->
+                <a href="https://www.tiktok.com/@altala_atnc" target="_blank" class="btn-contact btn-tiktok">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.33-.85.51-1.44 1.43-1.58 2.41-.14 1.01.23 2.06.94 2.78.73.71 1.74 1.02 2.73 1.02.95-.03 1.9-.41 2.52-1.12.59-.62.88-1.47.88-2.31V0z"/></svg>
+                    TikTok
+                </a>
+
+                <button onclick="saveContact()" class="btn-contact btn-save">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    GUARDAR CONTACTO
+                </button>
+            </div>
+        </div>
+
+        <p class="footer">POWERED BY CSM-SMART-CARDS</p>
+    </div>
+
+    <script>
+        function saveContact() {
+            // PEGA AQUÍ EL BASE64 DE TU FOTO PARA QUE SE GUARDE EN EL TELÉFONO
+            const FOTO_BASE64 = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAb8BvwMBIgACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAABgECBQcIBAP/xABLEAACAQMCAwMHBQwIBgMBAAAAAQIDBBEFBhIhMQcTQRQiUWFxgZEVMkKhsRYXIzQ2c3STssHC0QgkM1JUVWLhJVNygpSkRWSSQ//EABsBAQACAwEBAAAAAAAAAAAAAAABAgMEBQYH/8QAKhEBAAICAQMCBQQDAAAAAAAAAAECAwQRBRIhEzEiYZGhsUFCUsEUIzL/2gAMAwEAAhEDEQA/AN4gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABRvCAqDz+W2vR3NH9Yi6FzQqS4adalOXXEZpsD7AFJdAGQeWpf2lOThUuqMJJ4alNJot+U7FJ/123wuuaqI5hbst78PZkqfOE4zgpQkpRaypLmmfQlUAAAAAAAAAAAHzqV6VLHe1IU89OOSR8/LbXwuaP6xfzA9ALYTjOClFqUX0aeUy4AAAAAAAAAAAKZGSO7u3N9zlC3qeSu576bjhT4cYXsZHaPalbN4r6VcR9cKsZfbgpbJWJ4mW5i0NnNT1MdJmGxMjJFdP37oN5JRncytpPli4g4r49CSUa8K0FOlOE4NZUovKa9pMWrPs18mHJini9Zh9wUDeCzGqCMazvChYXtazt6MK1S34VcVateNCjSlJZUXN/Sa58KT5dcZR6dB3LR1W5nZ1aLtruNLvow7yNSFWnnHHTnHlKOeT8VkDPAAAAAAAAAAAAAAAAAFlWUYQlKcuGMVmUvQgIR2rbvq7Y0WnTsKqhqN3PFF4T4IrHFLD+HvNR/fP3h/my/UQ/keHtB3DLc26Lq+jJu2h+Bto+ChF9fe237yzbm1L3cOnaveWeeDTqPeNf8AMl14F68ZfwCUl2v2q67R120+XL6NfT51FCsu7jHgT5cXJeHX2ZOgYvMU08p9Gcc5Uo5TTjKPxOiOx3c3y7tvyO4nm907hpTy+cqf0JfU17UDhPyjKlGEOPbyEHe3WYr+3qeH+pk37EYxW/6OIpf1Ot/CQq8/Hbr8/U/aZNuxL8v6P6HW/hC0uiyj6FQFWid7wi90almKf4b0f6URy7hHyS482P8AZS8PUSTe35Ual+e/hRH68HUoVILrKEkva0cq8/HL6Lq1idSnj9v9N/7V/JrTP0Wn+yjKkG0Pe2hWWi2NtXupKrRoQhNKlJ4aXPwPf98Hbv8Aip/qpHRjJXj3eGvpbM2njHP0Spgin3wNvPl5VP8AVSMhoe59K12vXoabXdSpQjGVRODjhPOOvsLRes+Ilivq58cd16TEMzOahGUptKMVmTb6L0nPu4e1TcFbWryejXqoaeqjjQh3UX5q5KWX6cZNgds+5vkfb0dNtpuN7qTdNNPnCkvny+xL2nP8ISnONOnBznNqMIR6yb5JL3lmGEv++fvB8vlZfqIfyNv9lW7au6NAfl1RS1G1lwV2ljjT5xlj2fWjRu79sXm1b63tL2Sm61vGqppcs/Sj7nyPV2b7ie2t1W1zUk1aV/wFyvDhb5P3Pn8QOnl0KlsWnFNPKaymXBDUH9IaKlYaLlJ/1ifX/pNK93DGOCOPYbs/pC/iGi/pE/2DSwWh1F2cJLYehJf4Kn9hJCOdnP5CaF+hU/sJGFQAowI/vvcUNsbbutQbTrY7u3h/eqPov3+40V98/eH+bL9RD+Rke2Xcq1nca06hPitdNbg/RKq/nP3dPiRjaG27rdOsx021lwYpSqVKrWVGK6fFtIJZu07VN10LqjVuL/v6MJqVSl3MfPiuq9uDofS76hqen299aVFUoXFONSnJeKaORq9Kpb16tCvHhq0akqc4+iSeGvimbk7CtyqpQr7cup+fSzXtW31g350V7Hz94G3wUXQqEId2haDfa5a2sNPjTlKlUcpKc+HwNe3ezdftU5T06c0vGlJSNobu3LHbdChVdtKv303HlLhxyyYGh2oWM2ldadc0ovrKDjPHu5M1ctMU2+KfL0HTtnqGLBHpU7q+WsKtOdGo6dWnKnNdYzi4v4M9ekatqGi1e90q7nQ586fzqcn649PejblO72zvGi6Snb3M0vmS82pD3PmiE7q2Lc6XGd1pkpXNoucov59P+a+sxWxWp5pPLp4uqYNr/Ts07bfNKto79tdZnGy1CMbPUX82LfmVv+h/ufMmWfWc3yjGccSXLww8NP058DZnZ3vOpeVY6LrNTiu1HNtcS/8A7R9D/wBS+szYc/d4t7uX1To/oR6uHzX8Plq2n1bTVnQvqla2tHrHynTvoQlLMXSlGVNtJ8Mk5LGVjHrPXsnT671KwnGl/VNMtbigrt03B3U6tSMuJJpPpFtvGG3yJ/FlxsuAAAAAAAAAAAAAAAAANmuu2ncq0nbr0y3qON3qKcOT5xpfTfv6e82DXqQpUpVKklGEU3KT8EurOW98bglubc13qPFJ0MqnbrPzacemPbzfvAwdOnOpOFKlByqTkoQgl85t4S+J1BsTblPbG27fT4pd+13lxL+/UklxN/UvYkak7FNtLVtenrFzBStdOku7z0lXxlfBYftaN/JYQTMuYe0jb33ObruranDhtay8ot+WFwSfNL2PP1Hz7P8Acj2vua3vajatKmKN0l/y2/nf9r5/E3B207c+V9s/KFCCd3puaieObpv56+pP3HPb55XgwQ7FhOMoqUWmn0a8SrNe9jW5vlnbr0+5qN3um8NOXE+cqb+ZL93uNhMIcf3n47dfn6n7TJt2Jfl/R/Q638JCbz8duvz9T9pk27Evy/o/odb+ELS6LADCrRW9vyo1L89/CjAVJqnTnUksqEXLC8cGf3t+VGpfnv4UR27/ABSv+al9hyb/APcvo+rMxqUmP4p1p3Z1d6hYW93T1CjCNemqii6bbWVn0nq+9dff5nb/AKp/zJ5tXntvTH/9Wn9iMtg34wY+PZ4+3Wt2LTEW+zVv3r75f/J2/wCqf8zO7L2jW2reaje3d9SqU69KC5QceBQ4m28v1k1Zrbts3N8laFDR7ao43eopqXD1hSXzn784+JauGlZ5iGvn6ns7FOzJbmGod8bilufcdzqKbVv/AGdtF+FNdPjzfvJN2Kbbeq7gnqtxTzZ6d83PSdZ9F7lz96NfUaNW4rU6FvTdStVkoU4LrKT6I6m2XoFPbW3bTTYcLqQjxV5r6dR85P4mVoI72ybcetbWd1bQ4rvT5d9DHWUPpx+HP3HO785c+aa5o7FqRjODhNKUZLDT6NHLe+9AltvdF5YcOLdz722fg6cuaXufL3BMNz9ju5PlvbELO5qOV7pyVGbk8ucPoSfu5e4n5y52fbhltrdNreym42lT8Bdx8HTl0fueH8TqGE4zjGUGnGSymvFAlqT+kL+IaL+kT/YNLG6f6Qv4hov6RP8AYNLBMOo+zn8hNC/Qqf2EjI52c/kJoX6FT+wkYVCNdoO5IbZ21cXikvKZ/grePi6kunw6+4kjfI517Yty/Lu53Z29TitNN4qUcPlKo8cb92OH3MCCSk/OnUllttyk3zb6ts6F7HdsLQ9txvbinw3uo4qzbXONP6Efhz95qLs3239026KFvUhxWduu/uvQ4J8o+9/vOnIxSilFJLHLCCWgu23bq03cENXoQ4bfUuc8LkqyXP4rn7mQbQtUuNE1i01O1b722qKeP7y8V702jpTtB29Hcu1ryxSXlEY97byf0akea+PNexs5elGUJOE4uMotpx9D9AIdcaPqVvqul2uoWcuOhc0o1INehrp+49vgac7Cdypxr7buqnnLir2ifo+nFe/n72bi8AhD+0LQb/XLS0hp0KcpUpuUuOfDyx4GstS2/q2lpyvbGrCC6zj50fijfMpRhFyk1GK5tvojFVdwaI59zV1G0y/N4ZVFzNfLhreeZl2dDquxr09Ole6sNDr50ZRnKM484zhJqUfWpLmvcT/Zu/qka1LTdx1ONVPNoXsljLfSM/X6z1b12XQnbz1TQ4RjwpzqUIfNkv70V6ftNaVIRq03CaTi1ho1ub4LfJ6Dt1urYZmI4tH1hPO0PasbGb1TTqaVvOX4aEV8yT+kvU/Egc4zeJUZulVhJTpTi8OEl0aZtHs21pa/o11oeqydW4tIcEpT5urSlyi/auhrzWNPnpWp3FjU60ptJ+mPg/hgnNWPF6qdLz3vFtTP71+8Nx7G3Etx6DSuqiUbqm+6uILwqLr7n195IvA0t2XalLT92zs5zaoajSfLw7yHNP4ZN0+Bt4b91eXluoa3+NsWp+ioAMrSAAAAAAAAAAAKPoVKS6Aa17bdy/JugrSLerw3WocpcPWNJfOfqz0+Joe3oVbq4pW9vDirVpqnTgvpSbwl8Wb23b2XXO59eudUudccO8xGnS7jKpwS5RXP2v2su2f2UUNva9R1W5v3eSoJulTdJRUZvlxdfBZ+IEu2ZoFLbO3rTS6WHKmuKrP+/Ulzk37/ANxnQALK1ONWnKnUipQkmpRa5NPwOWN6aBLbO47vTMPuYy47d+mnL5v717jqohPaFsCjvGdpXV07O5t1KDqKHF3kHzw16n9rCYaP2HuOW19y22oSk1bS/BXSX/Lb5v3dfcdRU5xqRjOElKMlmMl0aNPPsObz/wAd/wDX/wBzZm1tKudE0O2026u3eSt48EKvDw+auixnwXIEuV7z8duvz9T9pkz7GKtOhvyjUrVIU4eSVlxTlhZ83lkllbsSdWvVq/LmO8qSnjyfpl5x1PnLsM4lh65leh2y/mDltv5TsP8AG2362P8AM+tG4pXEXKhVhUiuTcJZSfuNPfeLX+dr/wAZfzJ/sDaf3IaPV0/ynylTrOpxqHD1S5Y9wQ1lvb8qNS/Pfwojt1+KXH5qX2G2dc7Pp6pqtzeq/wC776fFw93nHJL0+ox1XsrnUpTh8qY4ouOe66Z95z7YL90zw9ng6vqV1q0m3mI4Tnav5N6Z+i0/2UZY8Wk2b0/TLWzc+N0KUafFjGcLqe0349njrTzaZfO4rU7ehOtWnGFOnFylKTwkl1ZyxvLcFTc24rrU5N91N8NCLWOGmunL6/edH7x0a53BoVfS7a98j8oxGpU4OJuHivea2fYe/wDPf/X/ANyUMX2H7Z8v1irrlzT/AKtZeZRb+lVfiv8ApX1v1G+MGJ2vodvtzQ7XS7Xzo0Y+dPGHOT5uT9rMuEDNZduW3vlDb8NYt6ebjTnmbXV0X874cn7mbNPjdUKdzQqUK0OOnUg4yj6U1hoDj9rOU+a9B0F2Mbl+WNtrTrmrx3unPu25dZ0/oP4cvcR+fYdF1Julrko03J8MXQzhZ5LqZrZvZldbV12lqdDWnUgoyp1qPcYVWD8Hz6p4YTMsZ/SF/ENF/SJ/sGljpXtC2U95ULKkr3yTyacp57vi4srHpIX946X+e/8Ar/7giU57Pb+zpbH0SFS7oQnGzppxlUimuXjzJFHUbKclCF5bylLkoxqpts1E+wtPrra/8ZfzPbofY38k61Y6itXjVdpXhVUHb44sPOOoEv7R9yrbO2Li5hNK7rLubZf634+5czmNvhTcn4Zk3zbfi8nRW/tgXO8dRt689Xdtb29Nxp0O64sNvzpN568l8DBaR2L0LPVLW6vNUd1Qo1FOVDueFTxzSbz0yBIeyXbP3P7YpVbinw318lWr56xTXmx9yf1snK6FI9CoQo+hzp2wbd+RN1VLqjDFpqOa0MdIz+mvjz97OjCNb82nQ3fo8bGrVdCrTqqrSrqOXBrk1j0NNoDmrRtSr6PqtpqVpnvraoqkfXjqveso6r0XVLfWdKtdRs5cdC5pqcWvD0r3dDVX3j3/AJ6//H/3J3sLa9ztLTKunVNQ8soOq6lLNPh7vPzl7G+ftyE8sZ2r3lzb6VbUKEpRpV6jVVx8cLKRqjhTWMJ+GGjoHWdItdZsZ2d9Dipy5pp4cX4NP0kLn2W0HPzdUrxhnH9nFtL2+k1M+K9rcw9H0rqetr4PTyR5/KzsbvLi403U7KtKVS2ta8VRcnnhUo5cV7MfWRTe+mQ0rcdzRpR4aVTFWmvQn1Xxybf29oVjt/To2On0+Cmm5Sk3mU5PrKT8WYfdezae4b6jdSu5UJU6fBhQTzzzktkxTbHFWto9Rx4t22SfFLNY7Ivnp29dMqptRueK3qY8U1lfWiQ9rFpGjrNrcRWO/otS9sX/ALmWtuzClQ1C0u1qtXNtWjVSVJedh9DPbu2pHckraUrqVB0OLpFPi4sfyKxht6fbLZv1HXjqNdis/Dx5aXsriVnq+l3cetG8p59Sbw/tOjE+SNcT7KqVThT1aquGcZZVJeDybGguGKXoWDJr0tSOJaXWNrDs5YvileADO5AAAAAAAAAAABj9Z1ajpFr5RcULqrT558noSqOKSzlpdF6zIHh1tf8AB77H+Hn+ywPLt/cNnr9uriwpXaoSgpwq1reVONSL8Yt9TIX13SsrOvd121RoU5VJtLLUYrL+pGB7Nk/uC0HPJ+RU/sMhuuOdr6wkm27Gthf9kgLLjcum2+kWeq1KlTyW8nShRag8t1GlHK8OpmMmodQ0/UKWwdtV6ur3Nei7mwatZUKaS8+Pio8XL2m3WBh9V3NY6XqVHTqtK8rXdak60KVtbyqvgTw28dOZlLO4jd21OvGnVpqosqFWDhJe1PmiBbrqQo9pWm1KurrSoLSqq8ofdpN94vNzNOJONLq069hQqUb2N7Bx5XMXFqp6/N5fAD1lH0KlH05gYuy3Bp17rd9o1Cu3f2MYyr0pRawpLKa9K6dPSj76NqtrrVhG9sZSlQlOUE5RcXmMnF8vamQGVhcS3RuTV9Oi3qGm39KpBJc69F0IKpS9eUsr/UkZ3srmqmzbepGMlGdxXklNYeHVk1lASDXNXtNC0uvqWoSnG2o443CDk+bSXJetos0rWKepuapWl9QUUnm6tpUlLPoz1MB2spvYOqJNr+y5rqvwseZkNr3VvWU6dPcdPVpqEW6cZUW6S9lNL6wM1eXEbS2q3EqdSoqcXJwpQc5yx4JLqzB6VvDTtV1CpY2ltqXfUqndVuOynGNGWM4m2sLl9qJFLHiQvY0Wtx7zbTSepxecdV3cQJp4GEW6tK+Rb7WHWnG0sZ1Kdw3TalCUHiSx16/aZtdDV97ZyW+LzbPdVPItVu6Gqykl5vBBfhIvw5ypwTXrAndXcWnU6Wl1HVlKOqVI07Tgg25txcvcsJmVTNY7Nt61xuujpVxGXdbZhcRjxRfDJ1Z/gmn44pr62bNAwuqbp03TryraSV1cXFGn3tanaW86zow8HLhXLo+XV4Mnp9/a6lZUb2xrRrW1eKlTqRfKSZCtF1Gz0Dc+6465Wp2cri5hdUZ15cKrUu7S8xv52GmsLnz9Z7+yy1uLXaNFXNGdHvq9avSpTWJQpzm3FNeHLwAz+uaxZ6Fp8r7UJTjRjOMPMg5tylJRikl6W0fDTNxWGpXtSxh39C9pwVSVtc0JUp8HTiSa5r1ownaxGc9oONN4m721w8Zx+GhzwefRqde17RLilrVbyu9q6dxWV1GKpwVLjXHTUFyznhecvK9gE6XQj73ho/yZPUO+qOjG7lZqKpNznWUuHhjHq+f1czProaZ21Tr6RXjuO7TudMoavd0KtGVP8T46mFXj6ebw/Qny8chuSnLjinhrK6Pqi8spyjNKUWpJrKa9BeAyYJbq06rfzs7ON3eTpVFSrVLW2lUp0pZ6Smljl48+XiZmqnKEoxeG1yZA+zTVNP0rbtDRNUr0rHVbWrKlcULmXBOpUcvnR4vnqTaw11yBP8mG1Tc2n6beqxkrm5vO772VC0t5VpQh/elwrkvRnr4GYbyiCabe22hb/wByz1y4haxvqdvVtK1d8MJ04RkpRUn4p88esCY6Tqdnq9hRvtOrxr21VZhOP2NeDXoK6rqNvpWnXOoXsnC3t6bqVJJZxFEY7MKNWGh3dzKlOlQvdRubm3hOLi1SnNuLw+mVzPX2j1OHZ9/Dq63d0UsZ+dOMf3gZCW5NMjtv7oXcf8N7jv8AveF54fZ1z4Y9J7dLv7fVdOttQs5OVvc0o1acmsNxksrka2jp1eWrVNlypTemQu56mpOOYO2a4o089OVaXJeiJK+zKfFsbSYvk6dKVLDXThlKP7gMvr+tWWgae77UZTjRU40/wcHOTlJ4SSXrZ8dK3DYand1rKk61G9oxU521zRlSqKL6Sw1zXrRgu1qM5bTgqTSqeX2vC2spPvY82jK6Vt6dDWquuajeu7v6lBW8XCn3dOlTznEY5b5vm22wM8Yj7otMW41oDry+UHR77g4Hw8PPlxdM4WcegytWcadOU5tKMVlt+CRp+Xyo9OlvaNpTlT+V1qCqd6+88mWKPDwcPTu8vr9IDcSMXqGv6dp2rafpd7X7u61Dj8mi4vE3HGVn08+XpMlRqRq0o1KcuKE0pRfpTILvfSqWtbx0OxrylBVLC94KsPnUZp0nGcfWmk17AJdbaraXOq3mmUpSd1ZwpzrRcWklPPDh+PzWeq6rK3t6laUZyjTi5OMFmTS9CIHsC7vLveO5HqVF0r2nbWdG483EZVI96nKPqfJ+82A+gGD+6nSXpFjqkK86ltfzhTtlCDc6kpdFw9c8nn0YZnFzXQ17t7SKNLtG1a2jKbs9PhG7tLdpcFGrXz3kl/8Al49HFI2EuSWAKgAAAAAAAAAAAABRpNYayioApGKikopJLwQcVJNNZT8GVAFjpU2lFwjhdFjkXYKgCyVKnN5nCMn61kujGMFiMVFLwSKgAAALVCKbaik31fpEYxgsRior0JYLgBbKEZLEkmn4MpClTg8whGL9SwXgCjWSihFNtRSb64XUuAAtcIuXE4ri9PiXAC1QjFtqKTfV46l2AALJU4TxxwjLHTKzguSSKgC2UIzWJRTXoY4I8SlwriXR+JcABZ3VPhceCOH1WOTLwBRRUeiwioAFMFsqVOTzKEZNeLWS8AUwWzpU5rE4Rkv9SyXgCmEUlCMliUU16GXAC3gjnPCs+kRjGCxFYXoRcALZQjNYlFSXoaLgADWVh9C3gjw8PCuH0Y5FwAokorCWEUcIt5cVn0lwAtUYqXEksvqy4AC1QipOSilJ9Xjmy4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//Z"; 
+
+            let photoVCard = "";
+            if (FOTO_BASE64.includes(",")) {
+                photoVCard = FOTO_BASE64.split(",")[1];
+            }
+
+            const vcard = "BEGIN:VCARD\n" +
+                          "VERSION:3.0\n" +
+                          "FN:Fernando Muñoz\n" +
+                          "ORG:ALTALA S.A.\n" +
+                          "TITLE:GERENTE GENERAL\n" +
+                          "TEL;TYPE=CELL:+593998004811\n" +
+                          "EMAIL:fernando.munoz@altala.net\n" +
+                          "URL:https://altala.net\n" +
+                          "PHOTO;ENCODING=b;TYPE=JPEG:" + photoVCard + "\n" +
+                          "END:VCARD";
+            
+            const blob = new Blob([vcard], { type: "text/vcard" });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "Fernando_Muñoz.vcf";
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
