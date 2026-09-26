@@ -1,1 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title> COLOSSUS FLOWERS </title>
+    <style>
+        /* RESET TOTAL */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+        }
 
+        /* FONDO BLINDADO PARA MÓVILES */
+        .background-fix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://stevencast556.github.io/CSM-NFC-CARDS/CLIENTE/COLOSUS_FLOWERS/imgCF/Fondo.jpeg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+
+        body {
+            background-color: #000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .main-wrapper {
+            width: 92%;
+            max-width: 450px;
+        }
+
+        /* --- TARJETA DE PERFIL --- */
+        .profile-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 35px;
+            padding: 40px 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        
+        .profile-img {
+            width: 100%;           /* Ocupa todo el ancho disponible de la tarjeta */
+            height: 220px;         /* Altura fija para mantener el rectangulo constante */
+            border-radius: 20px;   /* Esquinas redondeadas suaves, no circulares */
+            border: 2px solid rgba(255, 255, 255, 0.1); 
+            margin: 0 auto 20px;
+            display: block;
+            object-fit: cover;     /* La foto llena el recuadro sin estirarse */
+            object-position: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        h1 { font-size: 24px; margin-bottom: 5px; font-weight: 700; letter-spacing: -0.5px; }
+        .tagline { 
+            color: #1a2bc9; 
+            font-size: 18px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            margin-bottom: 30px; 
+            font-weight: 700; 
+        }
+
+        /* BOTONES EN COLUMNA (VERTICAL) */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-contact {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.3s ease;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Colores de botones */
+        .btn-call { background: #3b82f6; border: none; }
+        .btn-wa { background: #25D366; border: none; }
+        .btn-web { background: #1a2bc9; border: none; }
+        .btn-email { background: rgba(255, 255, 255, 0.15); }
+        .btn-instagram { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(225, 48, 108, 0.5); }
+        .btn-pdf { background: #f39c12; border: none; } 
+        .btn-save { background: #fff; color: #000; font-weight: 700; }
+
+        .btn-contact:active { transform: scale(0.97); }
+        
+        /* Estilo de Iconos */
+        .icon { 
+            width: 22px; 
+            height: 22px; 
+            fill: currentColor; 
+        }
+
+        .footer { text-align: center; color: rgba(255,255,255,0.3); padding: 40px 0; font-size: 9px; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+
+    <div class="background-fix"></div>
+    <div class="overlay"></div>
+
+    <div class="main-wrapper">
+        
+        <div class="profile-card">
+            <!-- FOTO CIRCULAR -->
+            <img src="imgCF/Perfil.png" class="profile-img" alt="Perfil">
+            <h1>COLOSSUS FLOWERS</h1>
+            
+            <div class="contact-list">
+
+                <!-- LLAMAR -->
+                <a href="tel:+593985119470" class="btn-contact btn-call">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79a15.15 15.15 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    Llamar ahora
+                </a>
+
+                <!-- WHATSAPP -->
+                <a href="https://wa.me/593985119470" class="btn-contact btn-wa">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.81 9.81 0 0012.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 012.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 01-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 8.07c-.13 0-.34.05-.52.24-.18.19-.69.67-.69 1.63s.7 1.89.8 2.03c.1.13 1.37 2.09 3.32 2.93.46.2.83.32 1.11.41.47.15.89.13 1.22.08.38-.05 1.17-.48 1.33-.94.16-.47.16-.86.11-.94-.05-.09-.18-.13-.38-.24s-1.17-.57-1.35-.64c-.18-.08-.31-.11-.45.09-.13.19-.52.64-.64.78-.11.13-.24.15-.44.05-.2-.1-1-.37-1.91-1.18-.71-.63-1.19-1.41-1.33-1.65-.13-.24-.01-.37.09-.47.09-.09.2-.24.3-.35.1-.11.13-.19.19-.32.07-.13.03-.25-.02-.35-.05-.09-.45-1.09-.62-1.5-.17-.4-.35-.35-.47-.35z"/></svg>
+                    WhatsApp
+                </a>
+
+                <!-- SITIO WEB -->
+                <a href="https://www.colossusflowers.com/" target="_blank" class="btn-contact btn-web">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    Web Colosus Flowers
+                </a>
+
+                <!-- INSTAGRAM -->
+                <a href="https://www.instagram.com/colossusflowers?stkn=MXZ1d2Uxb3h3NDdn" target="_blank" class="btn-contact btn-instagram">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 01-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 017.8 2m-.2 2A3.6 3.6 0 004 7.6v8.8A3.6 3.6 0 007.6 20h8.8a3.6 3.6 0 003.6-3.6V7.6A3.6 3.6 0 0016.4 4H7.6m9.65 1.5a1.25 1.25 0 011.25 1.25A1.25 1.25 0 0117.25 8 1.25 1.25 0 0116 6.75a1.25 1.25 0 011.25-1.25M12 7a5 5 0 015 5 5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5m0 2a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3z"/></svg>
+                    Instagram
+                </a>
+
+                <!-- CORREO -->
+                <a href="mailto:sales@colossusflowers.com" class="btn-contact btn-email">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    Correo Colossus Flowers
+                </a>
+
+                <!-- CORREO -->
+                <a href="mailto:sales@flowerdesign.com.ec" class="btn-contact btn-email">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    Correo Flower Desing
+                </a>
+
+                <!-- CATÁLOGO PDF -->
+                <a href="imgCF/catalogo.pdf" target="_blank" class="btn-contact btn-pdf">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    Ver Catálogo PDF
+                </a>
+
+                <!-- GUARDAR CONTACTO -->
+                <button onclick="saveContact()" class="btn-contact btn-save">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    GUARDAR CONTACTO
+                </button>
+            </div>
+        </div>
+
+        <p class="footer">POWERED BY CSM-SMART-CARDS</p>
+    </div>
+
+    <script>
+        function saveContact() {
+            // Variable para foto Base64 opcional en el vCard
+            const FOTO_BASE64 = ""; 
+            let photoVCard = "";
+            if (FOTO_BASE64.includes(",")) {
+                photoVCard = FOTO_BASE64.split(",")[1];
+            }
+
+            const vcard = "BEGIN:VCARD\n" +
+                          "VERSION:3.0\n" +
+                          "FN:SERGIO RUIZ\n" +
+                          "ORG:COLOSSUS FLOWERS\n" +
+                          "TITLE:Commercial Manager\n" +
+                          "TEL;TYPE=CELL:+593985119470\n" +
+                          "END:VCARD";
+            
+            const blob = new Blob([vcard], { type: "text/vcard" });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "Colossus_Flowers.vcf";
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
