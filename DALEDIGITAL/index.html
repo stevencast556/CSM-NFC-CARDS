@@ -23,23 +23,30 @@
         #viewer-screen { display: none; padding: 20px; }
         #pdf-main-container { display: flex; flex-direction: column; align-items: center; position: relative; margin-top: 20px; }
         canvas {
-    margin-bottom: 30px;
-    box-shadow: 0 0 50px rgba(0,0,0,0.8);
-    max-width: 100%;
-    height: auto; /* Importante para mantener proporción */
-    image-rendering: -webkit-optimize-contrast; /* Mejora el contraste del texto */
-    image-rendering: crisp-edges;
-    display: block;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background-color: white;
+    /* Mejora el renderizado de bordes en el navegador */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: auto;
 }
 
         /* Marca de Agua Dinámica */
         #watermark-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 100; opacity: 0.4;
+            pointer-events: none; z-index: 100; opacity: 0.5;
             display: flex; flex-wrap: wrap; justify-content: space-around; align-content: space-around;
         }
         .wm-item { transform: rotate(-45deg); font-size: 14px; color: Black; text-align: center; margin: 40px; white-space: nowrap; }
 
+        #pdf-main-container {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+        
         /* Bloqueo de Impresión */
         @media print { body { display: none !important; } }
         
@@ -190,44 +197,47 @@ canvas {
     const container = document.getElementById('pdf-main-container');
     container.innerHTML = ''; 
 
-    // 1. Detectar el ancho del contenedor (pantalla)
-    const containerWidth = container.clientWidth - 20; // Margen de seguridad
     const dpr = window.devicePixelRatio || 1;
+    
+    // FORZAMOS UNA ESCALA ALTA (2.5) para nitidez absoluta.
+    // Esto hace que PDF.js dibuje las letras con muchos más píxeles.
+    const renderScale = 2.5; 
 
     for (let n = 1; n <= pdf.numPages; n++) {
         const page = await pdf.getPage(n);
         
-        // 2. CALCULAR ESCALA AUTOMÁTICA
-        // Obtenemos el ancho original del PDF (escala 1)
-        const basicViewport = page.getViewport({ scale: 1.0 });
-        // Calculamos la escala necesaria para que el PDF ocupe el ancho de la pantalla
-        const dynamicScale = containerWidth / basicViewport.width;
-        
-        // Aplicamos la escala dinámica
-        const viewport = page.getViewport({ scale: dynamicScale });
+        // El viewport se calcula con la escala de alta resolución
+        const viewport = page.getViewport({ scale: renderScale });
 
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
 
-        // 3. ALTA RESOLUCIÓN (DPR)
-        // El dibujo interno es grande para nitidez
-        canvas.height = viewport.height * dpr;
-        canvas.width = viewport.width * dpr;
+        // 1. RESOLUCIÓN INTERNA: Multiplicamos por DPR para pantallas Retina/4K
+        canvas.width = Math.floor(viewport.width * dpr);
+        canvas.height = Math.floor(viewport.height * dpr);
 
-        // El tamaño visual es el que dicta la pantalla (Responsive)
-        canvas.style.width = "100%"; // Se adapta al contenedor
-        canvas.style.maxWidth = viewport.width + "px"; // Pero no crece más de su tamaño real en PC
+        // 2. TAMAÑO VISUAL (CSS): 
+        // En móviles será el 100% del ancho. En PC se limita para no ser gigante.
+        canvas.style.width = "100%"; 
+        canvas.style.maxWidth = "850px"; // Tamaño ideal de lectura en PC
         canvas.style.height = "auto";
+        canvas.style.display = "block";
+        canvas.style.margin = "0 auto 30px auto";
 
+        // 3. COMPENSACIÓN DE ESCALA:
+        // Ajustamos el contexto para que el dibujo no se vea "cortado" por el DPR
         context.scale(dpr, dpr);
         
         container.appendChild(canvas);
 
-        await page.render({
+        const renderContext = {
             canvasContext: context,
             viewport: viewport,
             intent: 'display'
-        }).promise;
+        };
+
+        // Renderizar
+        await page.render(renderContext).promise;
     }
 }
 
