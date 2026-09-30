@@ -22,7 +22,15 @@
         /* Visor de PDF */
         #viewer-screen { display: none; padding: 20px; }
         #pdf-main-container { display: flex; flex-direction: column; align-items: center; position: relative; margin-top: 20px; }
-        canvas { margin-bottom: 30px; box-shadow: 0 0 50px rgba(0,0,0,0.8); max-width: 95%; z-index: 5; background: white; }
+        canvas {
+    margin-bottom: 30px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    max-width: 100%;
+    height: auto; /* Importante para mantener proporción */
+    image-rendering: -webkit-optimize-contrast; /* Mejora el contraste del texto */
+    image-rendering: crisp-edges;
+    display: block;
+}
 
         /* Marca de Agua Dinámica */
         #watermark-overlay {
@@ -145,22 +153,48 @@
         });
 
         async function renderizarPaginas(pdf) {
-            const container = document.getElementById('pdf-main-container');
-            container.innerHTML = ''; // Limpiar previo
+    const container = document.getElementById('pdf-main-container');
+    container.innerHTML = ''; // Limpiar previo
 
-            for (let n = 1; n <= pdf.numPages; n++) {
-                const page = await pdf.getPage(n);
-                const viewport = page.getViewport({ scale: 1.5 });
-                const canvas = document.createElement('canvas');
-                const context = canvas.getContext('2d');
-                
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-                container.appendChild(canvas);
+    // Obtener la densidad de píxeles de la pantalla (Retina/4K suelen ser 2 o 3)
+    const dpr = window.devicePixelRatio || 1;
+    
+    // Escala base (Auméntala a 2.0 o 2.5 para mayor nitidez)
+    const baseScale = 2.0; 
 
-                await page.render({ canvasContext: context, viewport: viewport }).promise;
-            }
-        }
+    for (let n = 1; n <= pdf.numPages; n++) {
+        const page = await pdf.getPage(n);
+        
+        // Calculamos el viewport con la escala base
+        const viewport = page.getViewport({ scale: baseScale });
+        
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+
+        // AJUSTE DE ALTA RESOLUCIÓN:
+        // Definimos el tamaño interno del dibujo (grande para que no se pixele)
+        canvas.height = viewport.height * dpr;
+        canvas.width = viewport.width * dpr;
+
+        // Definimos el tamaño visual en la página (el tamaño real que verá el usuario)
+        canvas.style.width = viewport.width + "px";
+        canvas.style.height = viewport.height + "px";
+
+        // Escalamos el contexto para que el dibujo coincida con el aumento de resolución
+        context.scale(dpr, dpr);
+        
+        container.appendChild(canvas);
+
+        const renderContext = {
+            canvasContext: context,
+            viewport: viewport,
+            // Esto mejora la calidad de las fuentes
+            intent: 'display'
+        };
+
+        await page.render(renderContext).promise;
+    }
+}
 
         function mostrarLoader(show) {
             document.getElementById('loader').style.display = show ? 'block' : 'none';
