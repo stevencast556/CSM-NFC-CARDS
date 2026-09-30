@@ -45,6 +45,40 @@
         
         /* Loading Spinner */
         #loader { display: none; color: var(--accent); margin: 20px; font-weight: bold; }
+        #pdf-main-container {
+    width: 100%;
+    max-width: 900px; /* Tamaño máximo en PC para que no se vea gigante */
+    margin: 0 auto;   /* Centrado */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto 20px auto; /* Centrar canvas y espacio abajo */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    background-color: white;
+}
+
+/* Ajuste de marca de agua para móviles */
+.wm-item {
+    transform: rotate(-45deg);
+    font-size: 12px; /* Más pequeña en móvil */
+    opacity: 0.2;    /* Más transparente para que deje leer */
+}
+
+/* Media Query para pantallas grandes (PC) */
+@media (max-width: 480px) {
+    .login-card {
+        width: 90%;
+        padding: 20px;
+    }
+    input, button {
+        padding: 15px; /* Más grandes para el dedo */
+        font-size: 16px;
+    }
+}
+        
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -154,45 +188,46 @@
 
         async function renderizarPaginas(pdf) {
     const container = document.getElementById('pdf-main-container');
-    container.innerHTML = ''; // Limpiar previo
+    container.innerHTML = ''; 
 
-    // Obtener la densidad de píxeles de la pantalla (Retina/4K suelen ser 2 o 3)
+    // 1. Detectar el ancho del contenedor (pantalla)
+    const containerWidth = container.clientWidth - 20; // Margen de seguridad
     const dpr = window.devicePixelRatio || 1;
-    
-    // Escala base (Auméntala a 2.0 o 2.5 para mayor nitidez)
-    const baseScale = 2.0; 
 
     for (let n = 1; n <= pdf.numPages; n++) {
         const page = await pdf.getPage(n);
         
-        // Calculamos el viewport con la escala base
-        const viewport = page.getViewport({ scale: baseScale });
+        // 2. CALCULAR ESCALA AUTOMÁTICA
+        // Obtenemos el ancho original del PDF (escala 1)
+        const basicViewport = page.getViewport({ scale: 1.0 });
+        // Calculamos la escala necesaria para que el PDF ocupe el ancho de la pantalla
+        const dynamicScale = containerWidth / basicViewport.width;
         
+        // Aplicamos la escala dinámica
+        const viewport = page.getViewport({ scale: dynamicScale });
+
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
 
-        // AJUSTE DE ALTA RESOLUCIÓN:
-        // Definimos el tamaño interno del dibujo (grande para que no se pixele)
+        // 3. ALTA RESOLUCIÓN (DPR)
+        // El dibujo interno es grande para nitidez
         canvas.height = viewport.height * dpr;
         canvas.width = viewport.width * dpr;
 
-        // Definimos el tamaño visual en la página (el tamaño real que verá el usuario)
-        canvas.style.width = viewport.width + "px";
-        canvas.style.height = viewport.height + "px";
+        // El tamaño visual es el que dicta la pantalla (Responsive)
+        canvas.style.width = "100%"; // Se adapta al contenedor
+        canvas.style.maxWidth = viewport.width + "px"; // Pero no crece más de su tamaño real en PC
+        canvas.style.height = "auto";
 
-        // Escalamos el contexto para que el dibujo coincida con el aumento de resolución
         context.scale(dpr, dpr);
         
         container.appendChild(canvas);
 
-        const renderContext = {
+        await page.render({
             canvasContext: context,
             viewport: viewport,
-            // Esto mejora la calidad de las fuentes
             intent: 'display'
-        };
-
-        await page.render(renderContext).promise;
+        }).promise;
     }
 }
 
@@ -223,6 +258,14 @@
                 alert("Acción no permitida.");
             }
         });
+
+        window.addEventListener('resize', () => {
+    // Solo si el visor está activo, refrescamos para ajustar el tamaño
+    if(document.getElementById('viewer-screen').style.display === 'block') {
+        // Podrías llamar a una función que refresque la vista si es necesario
+        // Aunque con canvas.style.width = "100%" ya debería ajustarse visualmente.
+    }
+});
     </script>
 </body>
 </html>
