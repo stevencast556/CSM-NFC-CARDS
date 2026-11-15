@@ -1,1 +1,262 @@
-1
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MAPAS CONSTRUCTORES | Arq. Geovanny Vargas</title>
+    <meta name="theme-color" content="#1d1d1b">
+    <style>
+        /* PALETA MAPAS CONSTRUCTORES */
+        :root {
+            --beige: #e2d1b5;       /* arena / fondo del logo */
+            --beige-soft: rgba(226, 209, 181, 0.15);
+            --charcoal: #1d1d1b;    /* negro carbón */
+            --charcoal-2: #2b2a26;
+            --stone: #7d7a74;       /* gris Moné Gardens */
+        }
+
+        /* RESET TOTAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        /* FONDO BLINDADO */
+        .background-fix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('imgH/Fondo.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(29, 29, 27, 0.45) 0%, rgba(29, 29, 27, 0.85) 100%);
+            z-index: -1;
+        }
+
+        body {
+            background-color: var(--charcoal);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .main-wrapper {
+            width: 92%;
+            max-width: 450px;
+        }
+
+        /* --- TARJETA DE PERFIL --- */
+        .profile-card {
+            background: rgba(29, 29, 27, 0.55);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(226, 209, 181, 0.25);
+            border-radius: 35px;
+            padding: 35px 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid var(--beige);
+            margin: 0 auto 15px;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background-color: var(--beige);
+        }
+
+        h1 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 26px;
+            margin-bottom: 6px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+        .tagline {
+            color: var(--beige);
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        .subtagline {
+            color: rgba(255,255,255,0.55);
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+        .divider {
+            width: 50px;
+            height: 1px;
+            background: var(--beige);
+            margin: 0 auto 25px;
+            opacity: 0.6;
+        }
+
+        /* BOTONES VERTICALES */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-contact {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s ease;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-call { background: var(--beige); color: var(--charcoal); border: none; }
+        .btn-wa { background: #25D366; border: none; }
+        .btn-linktree { background: var(--charcoal); border: 1px solid var(--beige); color: var(--beige); }
+        .btn-email { background: var(--beige-soft); border: 1px solid rgba(226, 209, 181, 0.3); }
+        .btn-instagram { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(225, 48, 108, 0.5); }
+        .btn-web { background: rgba(125, 122, 116, 0.35); border: 1px solid rgba(255, 255, 255, 0.25); }
+        .btn-save { background: #fff; color: var(--charcoal); border: none; }
+
+        .btn-contact:active { transform: scale(0.97); }
+
+        /* Estilo de Iconos */
+        .icon {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        .footer { text-align: center; color: rgba(255,255,255,0.3); padding: 40px 0; font-size: 9px; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+
+    <div class="background-fix"></div>
+    <div class="overlay"></div>
+
+    <div class="main-wrapper">
+
+        <div class="profile-card">
+            <!-- FOTO / LOGO CIRCULAR -->
+            <img src="imgGV/Perfil.png" class="profile-img" alt="MAPAS Constructores">
+            <h1>Arq. Geovanny Vargas</h1>
+            <p class="tagline">MAPAS Constructores</p>
+            <p class="subtagline">Tumbaco · Quito</p>
+            <div class="divider"></div>
+
+            <div class="contact-list">
+                <!-- LLAMAR -->
+                <a href="tel:+593998954135" class="btn-contact btn-call">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79a15.15 15.15 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    Llamar ahora
+                </a>
+
+                <!-- WHATSAPP -->
+                <a href="https://wa.me/593998954135" target="_blank" class="btn-contact btn-wa">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.81 9.81 0 0012.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 012.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 01-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 8.07c-.13 0-.34.05-.52.24-.18.19-.69.67-.69 1.63s.7 1.89.8 2.03c.1.13 1.37 2.09 3.32 2.93.46.2.83.32 1.11.41.47.15.89.13 1.22.08.38-.05 1.17-.48 1.33-.94.16-.47.16-.86.11-.94-.05-.09-.18-.13-.38-.24s-1.17-.57-1.35-.64c-.18-.08-.31-.11-.45.09-.13.19-.52.64-.64.78-.11.13-.24.15-.44.05-.2-.1-1-.37-1.91-1.18-.71-.63-1.19-1.41-1.33-1.65-.13-.24-.01-.37.09-.47.09-.09.2-.24.3-.35.1-.11.13-.19.19-.32.07-.13.03-.25-.02-.35-.05-.09-.45-1.09-.62-1.5-.17-.4-.35-.35-.47-.35z"/></svg>
+                    WhatsApp
+                </a>
+
+                <!-- LINKTREE -->
+                <a href="https://linktr.ee/mapas.constructores" target="_blank" class="btn-contact btn-linktree">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M13.51 5.85l4.04-4.16 2.35 2.4-4.24 4.04h5.96v3.34h-5.99l4.27 4.14-2.35 2.36-5.8-5.82-5.8 5.82-2.35-2.35 4.27-4.15H1.88V8.13h5.96L3.6 4.09l2.35-2.4 4.04 4.16V0h3.52v5.85zM9.99 16.4h3.52V24H9.99v-7.6z"/></svg>
+                    Todos nuestros enlaces
+                </a>
+
+                <!-- EMAIL -->
+                <a href="mailto:construcciones@mapas-constructores.com" class="btn-contact btn-email">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    Enviar correo
+                </a>
+
+                <!-- INSTAGRAM -->
+                <a href="https://www.instagram.com/mapas.constructores/" target="_blank" class="btn-contact btn-instagram">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                    Instagram
+                </a>
+
+                <!-- WEB -->
+                <a href="https://monegardens.gr8.com/" target="_blank" class="btn-contact btn-web">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    Conoce Moné Gardens
+                </a>
+
+                <button onclick="saveContact()" class="btn-contact btn-save">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    GUARDAR CONTACTO
+                </button>
+            </div>
+        </div>
+
+        <p class="footer">POWERED BY CSM-SMART-CARDS</p>
+    </div>
+
+    <script>
+        function saveContact() {
+            const FOTO_BASE64 = "data:image/jpeg;base64,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";
+
+            let photoVCard = "";
+            if (FOTO_BASE64.includes(",")) {
+                photoVCard = FOTO_BASE64.split(",")[1];
+            }
+
+            const vcard = "BEGIN:VCARD\n" +
+                          "VERSION:3.0\n" +
+                          "N:Vargas;Geovanny;;Arq.;\n" +
+                          "FN:Arq. Geovanny Vargas\n" +
+                          "ORG:MAPAS Constructores\n" +
+                          "TITLE:Arquitecto\n" +
+                          "TEL;TYPE=CELL:+593998954135\n" +
+                          "EMAIL;TYPE=WORK:construcciones@mapas-constructores.com\n" +
+                          "URL:https://monegardens.gr8.com/\n" +
+                          "URL:https://linktr.ee/mapas.constructores\n" +
+                          "X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/mapas.constructores/\n" +
+                          "PHOTO;ENCODING=b;TYPE=JPEG:" + photoVCard + "\n" +
+                          "END:VCARD";
+
+            const blob = new Blob([vcard], { type: "text/vcard" });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "Geovanny_Vargas_MAPAS.vcf";
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
