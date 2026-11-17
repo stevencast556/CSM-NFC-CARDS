@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TREO | Camilo Osorio</title>
+    <meta name="theme-color" content="#14241e">
+    <style>
+        /* PALETA TREO (tomada de treo.lat) */
+        :root {
+            --green: #14241e;   /* verde bosque profundo */
+            --accent: #2e654b;  /* verde acento */
+            --ink: #1b2821;     /* tinta */
+            --muted: #5c6a60;
+            --paper: #f8faf7;   /* papel */
+            --rule: #d9e2da;
+        }
+
+        /* RESET TOTAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        /* FONDO BLINDADO */
+        .background-fix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--green);
+            background-image: url('imgH/Fondo.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(20, 36, 30, 0.25);
+            z-index: -1;
+        }
+
+        body {
+            background-color: var(--green);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .main-wrapper {
+            width: 92%;
+            max-width: 450px;
+        }
+
+        /* --- TARJETA DE PERFIL --- */
+        .profile-card {
+            background: rgba(248, 250, 247, 0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(217, 226, 218, 0.22);
+            border-radius: 28px;
+            padding: 35px 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--paper);
+            margin: 0 auto 18px;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background-color: var(--paper);
+        }
+
+        h1 { font-size: 26px; margin-bottom: 6px; font-weight: 640; letter-spacing: -0.5px; }
+        .role {
+            color: rgba(255,255,255,0.75);
+            font-size: 14px;
+            margin-bottom: 14px;
+        }
+        .tagline {
+            display: inline-block;
+            color: #9fd0b5;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 600;
+            margin-bottom: 26px;
+            padding: 6px 12px;
+            border: 1px solid rgba(159, 208, 181, 0.35);
+            border-radius: 999px;
+        }
+
+        /* BOTONES VERTICALES */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-contact {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px;
+            border-radius: 14px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s ease;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-call { background: var(--paper); color: var(--ink); border: none; }
+        .btn-wa { background: #25D366; border: none; }
+        .btn-email { background: var(--accent); border: none; }
+        .btn-instagram { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(225, 48, 108, 0.5); }
+        .btn-web { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(217, 226, 218, 0.35); }
+        .btn-save { background: #fff; color: var(--ink); border: none; }
+
+        .btn-contact:active { transform: scale(0.97); }
+
+        /* Estilo de Iconos */
+        .icon {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        .quote { margin-top: 26px; color: rgba(255,255,255,0.6); font-size: 13px; font-style: italic; }
+        .footer { text-align: center; color: rgba(255,255,255,0.3); padding: 40px 0; font-size: 9px; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+
+    <div class="background-fix"></div>
+    <div class="overlay"></div>
+
+    <div class="main-wrapper">
+
+        <div class="profile-card">
+            <!-- LOGO CIRCULAR -->
+            <img src="imgH/Perfil.png" class="profile-img" alt="Treo">
+            <h1>Camilo Osorio</h1>
+            <p class="role">Fundador · Gerente General</p>
+            <p class="tagline">Ingeniería de Crecimiento Comercial</p>
+
+            <div class="contact-list">
+                <!-- LLAMAR -->
+                <a href="tel:+593983016494" class="btn-contact btn-call">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79a15.15 15.15 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    Llamar ahora
+                </a>
+
+                <!-- WHATSAPP -->
+                <a href="https://wa.me/593983016494" target="_blank" class="btn-contact btn-wa">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.81 9.81 0 0012.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 012.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 01-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 8.07c-.13 0-.34.05-.52.24-.18.19-.69.67-.69 1.63s.7 1.89.8 2.03c.1.13 1.37 2.09 3.32 2.93.46.2.83.32 1.11.41.47.15.89.13 1.22.08.38-.05 1.17-.48 1.33-.94.16-.47.16-.86.11-.94-.05-.09-.18-.13-.38-.24s-1.17-.57-1.35-.64c-.18-.08-.31-.11-.45.09-.13.19-.52.64-.64.78-.11.13-.24.15-.44.05-.2-.1-1-.37-1.91-1.18-.71-.63-1.19-1.41-1.33-1.65-.13-.24-.01-.37.09-.47.09-.09.2-.24.3-.35.1-.11.13-.19.19-.32.07-.13.03-.25-.02-.35-.05-.09-.45-1.09-.62-1.5-.17-.4-.35-.35-.47-.35z"/></svg>
+                    WhatsApp
+                </a>
+
+                <!-- EMAIL -->
+                <a href="mailto:Gerencia@treo.lat" class="btn-contact btn-email">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    Gerencia@treo.lat
+                </a>
+
+                <!-- INSTAGRAM -->
+                <a href="https://www.instagram.com/treolatam/" target="_blank" class="btn-contact btn-instagram">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                    @treolatam
+                </a>
+
+                <!-- WEB -->
+                <a href="https://treo.lat" target="_blank" class="btn-contact btn-web">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    treo.lat
+                </a>
+
+                <button onclick="saveContact()" class="btn-contact btn-save">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    GUARDAR CONTACTO
+                </button>
+            </div>
+
+            <p class="quote">La mentalidad de otro dueño, de tu lado.</p>
+        </div>
+
+        <p class="footer">POWERED BY CSM-SMART-CARDS</p>
+    </div>
+
+    <script>
+        function saveContact() {
+            const FOTO_BASE64 = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCADwAPADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6hooopCCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAChiFUsxAUcknoK8x+K3xe0jwOGsrZV1LXCOLZH+SH3lYdP90c/SvmDxV498WeOL3yr+/uZkkY+XY2oKxjPYIv3vxyaCXKx9mah438LadP5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bsds0R9GTr+PSgE7nR1ieJPCmg+JowmvaTaX2BgPJH86/Rh8w/Otuigo8lv/ANn/AMD3LM0MOo2hIIAhuiQD64YGobD9nrwXb+WbhtUu2XOfMuAob6hQK9gooFZGR4Y8NaP4W082WgWEVlbs29lTJLtjGWJ5Jp/iPw/pPiXTzY67Yw3trncElHQ+oI5B9xWpRQM8hv8A9nzwTclzbjU7QsMDyrncF98MDTbD9nnwXb7Dctql2ynJ8y4ChvYhVFewUUCsjA8NeDfDvhgf8SLR7OzfGDKiZkP1c5b9a36KKBhWP4w8RWPhTw5e6zqb4t7ZMhQeZG/hQe5PFQ+MfF2ieD9Oa8169jt1x8kQ+aWU+iJ1P8q+QPix8SNR+Imqwr5JttMt3ItLRPmYknG5vVzwOOnQe4Juxjadb6h8Q/iHHG+WvdXvC8pUcIrHLH6Kufyr7wsrWKxsre0tlCQQRrFGo7KowP0FeQ/s9fDOXwlp0mta5CE1u8QKkTcm2iPOD6Me/pgD1r2SgUVYKKKKCgooooAKKKKACiiigAooooAKKKKACiiigDyv4rfBvSfGhl1DT2XTdcI5mVf3c5/6aKO/+0OfXNfMniXwX4s8CX3m39leWZjPyX1sxMZ9xIvT6HBr7vpHVXRkdQyMMFWGQfwoJcbnxLpHxl8d6bEI4tdkuEAwBdRpMR+JGf1rQ/4Xz4+/6CNp/wCAcf8AhX1Nd+AvCV5OZrnwzo8kp6sbRMn9Ki/4Vz4L/wChV0b/AMBE/wAKBWfc+Xv+F8+Pv+gjaf8AgHH/AIUf8L58ff8AQRtP/AOP/CvqH/hXPgv/AKFXRv8AwET/AAo/4Vz4L/6FXRv/AAET/CgLPufL3/C+fH3/AEEbT/wDj/wo/wCF8+Pv+gjaf+Acf+FfUP8AwrnwX/0Kujf+Aif4Uf8ACufBf/Qq6N/4CJ/hQFn3Pl7/AIXz4+/6CNp/4Bx/4Uf8L58ff9BG0/8AAOP/AAr6h/4Vz4L/AOhV0b/wET/Cj/hXPgv/AKFXRv8AwET/AAoCz7ny9/wvnx9/0EbT/wAA4/8ACqWp/Grx5fxGN9cNupG0/ZoUjJ/EDP5V9Xf8K58F/wDQq6N/4CJ/hUlt4A8IW0yzQeGNGSRejC0Tj9KAs+58Y6D4Y8V+PNT32NrfalM5+e7nYlF92kbj9a+lPhJ8FbDwhNFquuSR6jrafNHtB8m3PqoP3m/2j07DvXr0UaRRrHEixxqMKqDAH0Ap1A1GwUUUUFBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAH/2Q==";
+
+            let photoVCard = "";
+            if (FOTO_BASE64.includes(",")) {
+                photoVCard = FOTO_BASE64.split(",")[1];
+            }
+
+            const vcard = "BEGIN:VCARD\n" +
+                          "VERSION:3.0\n" +
+                          "N:Osorio;Camilo;;;\n" +
+                          "FN:Camilo Osorio\n" +
+                          "ORG:Treo\n" +
+                          "TITLE:Fundador - Gerente General\n" +
+                          "TEL;TYPE=CELL:+593983016494\n" +
+                          "EMAIL;TYPE=WORK:Gerencia@treo.lat\n" +
+                          "URL:https://treo.lat\n" +
+                          "X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/treolatam/\n" +
+                          "PHOTO;ENCODING=b;TYPE=JPEG:" + photoVCard + "\n" +
+                          "END:VCARD";
+
+            const blob = new Blob([vcard], { type: "text/vcard" });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "Camilo_Osorio_Treo.vcf";
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
